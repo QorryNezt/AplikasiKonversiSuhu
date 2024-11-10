@@ -1,4 +1,4 @@
-# AplikasiKonversiSuhu
+![image](https://github.com/user-attachments/assets/63452eef-7762-4f84-aac5-731ae213f873)![image](https://github.com/user-attachments/assets/a9888753-a83d-47ef-a352-b82234a6d5d3)# AplikasiKonversiSuhu
  Tugas 2 - Sayyida Qurrata A'yunin (2210010331)
  Aplikasi ini bertujuan untuk mengonversi suhu menggunakan Suhu dalam derajat Celsius untuk dasar sebagai angka konversinya.
  Suhu yang dikonversi akan diubah menjadi 3 suhu yakni: Reamur, Fahrenheit, dan Kelvin.
@@ -7,4 +7,18 @@
  Berikut saya sertakan screenshot sample dari running program saya:
 
  Tampilan Base:
-![App Screenshot]()
+![App Screenshot](https://github.com/QorryNezt/AplikasiKonversiSuhu/blob/main/sample%20pics/base.png?raw=true)
+
+ Tampilan Hitung:
+![App Screenshot](https://github.com/QorryNezt/AplikasiKonversiSuhu/blob/main/sample%20pics/s1.png?raw=true)
+![App Screenshot](https://github.com/QorryNezt/AplikasiKonversiSuhu/blob/main/sample%20pics/s2.png?raw=true)
+![App Screenshot](https://github.com/QorryNezt/AplikasiKonversiSuhu/blob/main/sample%20pics/neg.png?raw=true)
+
+ Tampilan Warning jika menginput diluar angka:
+ ![App Screenshot](https://github.com/QorryNezt/AplikasiKonversiSuhu/blob/main/sample%20pics/warn.png?raw=true)
+
+  Tampilan Warning jika menginput diluar limit Celsius:
+ ![App Screenshot](https://github.com/QorryNezt/AplikasiKonversiSuhu/blob/main/sample%20pics/warn_lim.png?raw=true)
+
+   Tampilan Button Keluar:
+ ![App Screenshot](https://github.com/QorryNezt/AplikasiKonversiSuhu/blob/main/sample%20pics/quit.png?raw=true)
