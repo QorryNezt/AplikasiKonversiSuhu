@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/63452eef-7762-4f84-aac5-731ae213f873)![image](https://github.com/user-attachments/assets/a9888753-a83d-47ef-a352-b82234a6d5d3)# AplikasiKonversiSuhu
+# AplikasiKonversiSuhu
  Tugas 2 - Sayyida Qurrata A'yunin (2210010331)
  Aplikasi ini bertujuan untuk mengonversi suhu menggunakan Suhu dalam derajat Celsius untuk dasar sebagai angka konversinya.
  Suhu yang dikonversi akan diubah menjadi 3 suhu yakni: Reamur, Fahrenheit, dan Kelvin.
