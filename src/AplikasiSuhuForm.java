@@ -1,5 +1,7 @@
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -73,9 +75,19 @@ public class AplikasiSuhuForm extends javax.swing.JFrame {
         jLabel5.setText("Kelvin");
 
         txtCelsius.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        txtCelsius.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCelsiusFocusGained(evt);
+            }
+        });
         txtCelsius.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCelsiusActionPerformed(evt);
+            }
+        });
+        txtCelsius.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCelsiusKeyTyped(evt);
             }
         });
 
@@ -105,6 +117,11 @@ public class AplikasiSuhuForm extends javax.swing.JFrame {
 
         btnHitung.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         btnHitung.setText("Hitung");
+        btnHitung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHitungActionPerformed(evt);
+            }
+        });
 
         btnClear.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         btnClear.setText("Hapus");
@@ -116,6 +133,11 @@ public class AplikasiSuhuForm extends javax.swing.JFrame {
 
         btnQuit.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         btnQuit.setText("Keluar");
+        btnQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,7 +205,7 @@ public class AplikasiSuhuForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        clearFields();
+        clearFields(); // Sama dengan fungsinya FOCUS GAIN Celsius Event
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelsiusActionPerformed
@@ -201,6 +223,69 @@ public class AplikasiSuhuForm extends javax.swing.JFrame {
     private void txtKelvinFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtKelvinFocusGained
         txtKelvin.selectAll();
     }//GEN-LAST:event_txtKelvinFocusGained
+
+    private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
+        // Fungsi button Keluar atau Quit. Sebelum menutup program akan ada konfirmasi terdahulu.
+        int response = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin keluar?", "Konfirmasi Keluar",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (response == JOptionPane.YES_OPTION) {
+        System.exit(0);
+    }
+    }//GEN-LAST:event_btnQuitActionPerformed
+
+    private void txtCelsiusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelsiusKeyTyped
+        // Handle Exception jika user menekan tombol bukan numerik 
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE && 
+    (c != '-' || txtCelsius.getText().contains("-") || txtCelsius.getCaretPosition() != 0)) {
+
+    // Consume event untuk mencegah input non numerik terkecuali simbol minus (-)
+    evt.consume();
+
+    // Show warning message
+    JOptionPane.showMessageDialog(this, "Hanya menerima inputan angka saja dan pastikan input di dalam range Celsius!", "Invalid input >x<", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_txtCelsiusKeyTyped
+
+    private void txtCelsiusFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCelsiusFocusGained
+        clearFields(); //Menghapus semua text field menjadi bersih
+    }//GEN-LAST:event_txtCelsiusFocusGained
+
+    private void btnHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungActionPerformed
+        try {
+        // Parsing masukan celsius
+        double celsius = Double.parseDouble(txtCelsius.getText());
+
+        // Definisikan limit yang bisa di input user dalam suhu Celsius
+        double minCelsius = -273.15; // Absolute zero
+        double maxCelsius = 1000;    // Example maximum limit
+
+        // Check apabila input user sesuai dengan limitnya maka kode akan
+        // Berjalan tanpa ada warning
+        if (celsius < minCelsius || celsius > maxCelsius) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Mohon masukan value Celsius diantara " + minCelsius + " dan " + maxCelsius + ".",
+                "Diluar Jangkauan", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Menjalankan konversi jika angka input sesuai dalam range atau jarak
+        double fahrenheit = (celsius * 9/5) + 32;
+        txtFahrenheit.setText(String.format("%.2f", fahrenheit));
+        
+        double reamur = celsius * 4/5;
+        txtReamur.setText(String.format("%.2f", reamur));
+        
+        double kelvin = celsius + 273.15;
+        txtKelvin.setText(String.format("%.2f", kelvin));
+
+    } catch (NumberFormatException e) {
+        // Handle input tidak valid
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "Mohon masukan value yang sesuai dalam range Celcius!",
+            "Input Tidak Valid", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_btnHitungActionPerformed
 
     /**
      * @param args the command line arguments
