@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Asus
+ * @author Sayyida Qurrata A'yunin - 2210010331
  */
 public class AplikasiSuhuForm extends javax.swing.JFrame {
 
@@ -19,8 +19,10 @@ public class AplikasiSuhuForm extends javax.swing.JFrame {
      */
     public AplikasiSuhuForm() {
         initComponents();
+        // Membuat BG Berwarna biru muda
         Color col = new Color(194,218,249);
         getContentPane().setBackground(col);
+        // Membuat text konversi bisa di highlight tapi tidak bisa diedit
         txtFahrenheit.setFocusable(true); 
         txtReamur.setFocusable(true); 
         txtKelvin.setFocusable(true); 
@@ -209,19 +211,25 @@ public class AplikasiSuhuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtCelsiusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelsiusActionPerformed
-        // TODO add your handling code here:
+        // Kode placeholder tidak ada gunanya XD
     }//GEN-LAST:event_txtCelsiusActionPerformed
 
     private void txtFahrenheitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFahrenheitFocusGained
-        txtFahrenheit.selectAll();
+        txtFahrenheit.selectAll(); 
+        // Memblok isi konten fahrenheit apabila focus gain / di klik
+        //Hanya bisa di highlight guna di copas isi konten saja.
     }//GEN-LAST:event_txtFahrenheitFocusGained
 
     private void txtReamurFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtReamurFocusGained
         txtReamur.selectAll();
+        // Memblok isi konten Reamur apabila focus gain / di klik
+        //Hanya bisa di highlight guna di copas isi konten saja.
     }//GEN-LAST:event_txtReamurFocusGained
 
     private void txtKelvinFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtKelvinFocusGained
         txtKelvin.selectAll();
+        // Memblok isi konten Kelvin apabila focus gain / di klik
+        // Hanya bisa di highlight guna di copas isi konten saja.
     }//GEN-LAST:event_txtKelvinFocusGained
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
